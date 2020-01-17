@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""COSIFER client."""
+import logging
+import sys
+import argparse
+from cosifer.pipelines.pipeline_cli import run
+from cosifer.inferencers import RECOMMENDED_INFERENCERS
+from cosifer.combiners import RECOMMENDED_COMBINER
+
+# setup logging
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger('cosifer-cli')
+
+
+def argument_parser():
+    """"
+    Argument parser for COSIFER client.
+
+    Returns:
+        Namespace: argument namespace.
+    """
+    parser = argparse.ArgumentParser(
+        description='Run COSIFER to perform network inference on given data.'
+    )
+    parser.add_argument('-i', '--filepath', required=True,
+                        help='path to the data.')
+    parser.add_argument('-o', '--output_directory', required=True,
+                        help='path to the output directory.')
+    parser.add_argument('--standardize',
+                        required=False,
+                        default=True,
+                        help='standardize the data. Defaults to True.')
+    parser.add_argument('--samples_on_rows',
+                        required=False,
+                        default=True,
+                        help='rows in the data contain the samples. '
+                             'Defaults to True.')
+    parser.add_argument('--sep',
+                        required=False,
+                        default='\t',
+                        help='separator for the data. Defaults to \t.')
+    parser.add_argument('--fillna',
+                        required=False,
+                        default=0.,
+                        help='fill NAs with a given value. Defaults to 0..')
+    parser.add_argument('--header',
+                        required=False,
+                        default=0,
+                        help='header index in the data. Defaults to 0.')
+    parser.add_argument('--index',
+                        required=False,
+                        default=None,
+                        help='column index in the data. Defaults to None, '
+                             'a.k.a., no index.')
+    parser.add_argument('--methods',
+                        action='append',
+                        default=list(),
+                        help='methods which should be used for network '
+                             'inference. If no methods are passed, it '
+                             'defaults to the following set '
+                             'of methods: {}'.format(RECOMMENDED_INFERENCERS))
+    parser.add_argument('--combiner',
+                        default=RECOMMENDED_COMBINER,
+                        help='method used for consensus network inference. '
+                             'Defaults to: {}'.format(RECOMMENDED_COMBINER))
+    parser.add_argument('--gmt_filepath',
+                        required=False,
+                        default=None,
+                        help='optional GMT file to perform inference on '
+                        'multiple gene sets.')
+    return parser.parse_args()
+
+
+if __name__ == '__main__':
+    try:
+        # load arguments
+        arguments = argument_parser()
+        logger.debug(arguments)
+    except Exception:
+        logger.exception('error parsing the arguments')
+    try:
+        # run the client
+        run(
+            filepath=arguments.filepath,
+            output_directory=arguments.output_directory,
+            standardize=arguments.standardize,
+            samples_on_rows=arguments.samples_on_rows,
+            sep=arguments.sep, fillna=arguments.fillna,
+            header=arguments.header, index_col=arguments.index,
+            methods=arguments.methods, combiner=arguments.combiner,
+            gmt_filepath=arguments.gmt_filepath
+        )
+    except Exception:
+        logger.exception('error running COSIFER.')

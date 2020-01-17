@@ -1,0 +1,8 @@
+numpy==1.15.1
+scipy==1.1.0
+seaborn==0.9.0
+pandas==0.23.4
+scikit-learn==0.19.2
+statsmodels==0.9.0
+rpy2==2.9.1
+pySUMMA @ git+https://github.com/learn-ensemble/PY-SUMMA@master
