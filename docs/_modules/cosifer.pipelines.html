@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cosifer.pipelines package &mdash; cosifer 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="cosifer.utils package" href="cosifer.utils.html" />
+    <link rel="prev" title="cosifer.inferencers package" href="cosifer.inferencers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cosifer
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cosifer.html">cosifer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.collections.html">cosifer.collections package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.combiners.html">cosifer.combiners package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.handlers.html">cosifer.handlers package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.inferencers.html">cosifer.inferencers package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">cosifer.pipelines package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.pipelines.pipeline_cli">cosifer.pipelines.pipeline_cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.pipelines.pipeline_gui">cosifer.pipelines.pipeline_gui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.pipelines">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.utils.html">cosifer.utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">cosifer</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cosifer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="cosifer.html">cosifer package</a> &raquo;</li>
+        
+      <li>cosifer.pipelines package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_modules/cosifer.pipelines.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cosifer-pipelines-package">
+<h1>cosifer.pipelines package<a class="headerlink" href="#cosifer-pipelines-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cosifer.pipelines.pipeline_cli">
+<span id="cosifer-pipelines-pipeline-cli-module"></span><h2>cosifer.pipelines.pipeline_cli module<a class="headerlink" href="#module-cosifer.pipelines.pipeline_cli" title="Permalink to this headline">¶</a></h2>
+<p>COSIFER client pipeline.</p>
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_cli.get_interaction_tables">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_cli.</code><code class="sig-name descname">get_interaction_tables</code><span class="sig-paren">(</span><em class="sig-param">output_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_cli.get_interaction_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform graphs from the output directory into interaction tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output_directory</strong> (<em>str</em>) – path to the output directory</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>interaction tables from each method in a dictionary.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_cli.method_selection">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_cli.</code><code class="sig-name descname">method_selection</code><span class="sig-paren">(</span><em class="sig-param">methods=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_cli.method_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select inference methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>methods</strong> (<em>list</em>) – list of inferencers to run. Defaults to None,
+a.k.a., use defaults.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a dictionary keyed by method name and inferencers as values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_cli.run">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_cli.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">output_directory</em>, <em class="sig-param">standardize=True</em>, <em class="sig-param">samples_on_rows=True</em>, <em class="sig-param">sep='\t'</em>, <em class="sig-param">fillna=0.0</em>, <em class="sig-param">header=0</em>, <em class="sig-param">index_col=0</em>, <em class="sig-param">methods=None</em>, <em class="sig-param">combiner=None</em>, <em class="sig-param">gmt_filepath=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_cli.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run COSIFER client pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – path to the file.</p></li>
+<li><p><strong>output_directory</strong> (<em>str</em>) – path where to store the results.</p></li>
+<li><p><strong>standardize</strong> (<em>bool</em><em>, </em><em>optional</em>) – toggle data standardization.
+Defaults to True.</p></li>
+<li><p><strong>samples_on_rows</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to indicate whether data are
+following the format where each row represents a sample.
+Defaults to True.</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>optional</em>) – field separator. Defaults to ‘     ‘.</p></li>
+<li><p><strong>fillna</strong> (<em>float</em><em>, </em><em>optional</em>) – value used to fill NAs. Defaults to 0.</p></li>
+<li><p><strong>header</strong> (<em>int</em><em>, </em><em>optional</em>) – line for the header in the input file.
+Defaults to 0.</p></li>
+<li><p><strong>index_col</strong> (<em>int</em><em>, </em><em>optional</em>) – column index for the input index.
+Defaults to 0.</p></li>
+<li><p><strong>methods</strong> (<em>list</em><em>, </em><em>optional</em>) – inference methods. Defaults to None, a.k.a.,
+only recommended methods.</p></li>
+<li><p><strong>combiner</strong> (<em>str</em><em>, </em><em>optional</em>) – combiner type. Defaults to None, a.k.a.,
+no combination.</p></li>
+<li><p><strong>gmt_filepath</strong> (<em>str</em><em>, </em><em>optional</em>) – GMT file containing feature sets.
+Defaults to None, a.k.a., no GMT file provided.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_cli.run_combiner">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_cli.</code><code class="sig-name descname">run_combiner</code><span class="sig-paren">(</span><em class="sig-param">combiner_name</em>, <em class="sig-param">interaction_tables_dict</em>, <em class="sig-param">output_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_cli.run_combiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine interaction tables received from every methods and
+save the interaction table in the output directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>combiner_name</strong> (<em>str</em>) – combiner type.</p></li>
+<li><p><strong>interaction_tables_dict</strong> (<em>dict</em>) – dictionary containing interaction
+tables from each method.</p></li>
+<li><p><strong>output_directory</strong> (<em>str</em>) – path to the output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_cli.run_inference">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_cli.</code><code class="sig-name descname">run_inference</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">selected_methods</em>, <em class="sig-param">output_directory</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_cli.run_inference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform network inference of the data given a set of methods
+and save the predicted graphs in an output directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – input dataframe.</p></li>
+<li><p><strong>selected_methods</strong> (<em>dict</em>) – selected inference methods.</p></li>
+<li><p><strong>output_directory</strong> (<em>str</em>) – output directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.pipelines.pipeline_gui">
+<span id="cosifer-pipelines-pipeline-gui-module"></span><h2>cosifer.pipelines.pipeline_gui module<a class="headerlink" href="#module-cosifer.pipelines.pipeline_gui" title="Permalink to this headline">¶</a></h2>
+<p>COSIFER GUI pipeline.</p>
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_gui.method_selection">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_gui.</code><code class="sig-name descname">method_selection</code><span class="sig-paren">(</span><em class="sig-param">methods=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_gui.method_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select inference methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>methods</strong> (<em>list</em>) – list of inferencers to run. Defaults to None,
+a.k.a., use defaults.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a dictionary keyed by method name and inferencers as values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_gui.run">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_gui.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">results_filepath</em>, <em class="sig-param">methods=None</em>, <em class="sig-param">combiner='summa'</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_gui.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run COSIFER GUI pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – data used for inference.</p></li>
+<li><p><strong>results_filepath</strong> (<em>str</em>) – path where to store the results.</p></li>
+<li><p><strong>methods</strong> (<em>list</em><em>, </em><em>optional</em>) – inference methods. Defaults to None, a.k.a.,
+only recommended methods.</p></li>
+<li><p><strong>combiner</strong> (<em>str</em><em>, </em><em>optional</em>) – combiner type. Defaults to summa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_gui.run_combiner">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_gui.</code><code class="sig-name descname">run_combiner</code><span class="sig-paren">(</span><em class="sig-param">combiner_name</em>, <em class="sig-param">interaction_tables_dict</em>, <em class="sig-param">results_filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_gui.run_combiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine interaction tables received from every methods and
+save the interaction table to a output file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>combiner_name</strong> (<em>str</em>) – combiner type.</p></li>
+<li><p><strong>interaction_tables_dict</strong> (<em>dict</em>) – dictionary containing interaction
+tables from each method.</p></li>
+<li><p><strong>results_filepath</strong> (<em>str</em>) – path to the results.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.pipelines.pipeline_gui.run_inference">
+<code class="sig-prename descclassname">cosifer.pipelines.pipeline_gui.</code><code class="sig-name descname">run_inference</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">selected_methods</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.pipelines.pipeline_gui.run_inference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform network inference of the data given a set of methods
+and save the predicted graphs in an output directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – input dataframe.</p></li>
+<li><p><strong>selected_methods</strong> (<em>dict</em>) – selected inference methods.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>interaction tables inferred with the selected methods.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.pipelines">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cosifer.pipelines" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cosifer.utils.html" class="btn btn-neutral float-right" title="cosifer.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cosifer.inferencers.html" class="btn btn-neutral float-left" title="cosifer.inferencers package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, PhosphorylatedRabbits team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

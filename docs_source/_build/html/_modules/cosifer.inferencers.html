@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cosifer.inferencers package &mdash; cosifer 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="cosifer.pipelines package" href="cosifer.pipelines.html" />
+    <link rel="prev" title="cosifer.handlers package" href="cosifer.handlers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cosifer
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cosifer.html">cosifer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.collections.html">cosifer.collections package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.combiners.html">cosifer.combiners package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.handlers.html">cosifer.handlers package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">cosifer.inferencers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.aracne">cosifer.inferencers.aracne module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.clr">cosifer.inferencers.clr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.correlation">cosifer.inferencers.correlation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.funchisq">cosifer.inferencers.funchisq module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.genie3">cosifer.inferencers.genie3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.glasso">cosifer.inferencers.glasso module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.jrf">cosifer.inferencers.jrf module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.mrnet">cosifer.inferencers.mrnet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.network_inferencer">cosifer.inferencers.network_inferencer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers.tigress">cosifer.inferencers.tigress module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cosifer.inferencers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.pipelines.html">cosifer.pipelines package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosifer.utils.html">cosifer.utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipcrg.html">ipcrg package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipcrg.entities.html">ipcrg.entities package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipcrg.interfaces.html">ipcrg.interfaces package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipcrg.io.html">ipcrg.io package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipcrg.relations.html">ipcrg.relations package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">cosifer</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cosifer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="cosifer.html">cosifer package</a> &raquo;</li>
+        
+      <li>cosifer.inferencers package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_modules/cosifer.inferencers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cosifer-inferencers-package">
+<h1>cosifer.inferencers package<a class="headerlink" href="#cosifer-inferencers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cosifer.inferencers.aracne">
+<span id="cosifer-inferencers-aracne-module"></span><h2>cosifer.inferencers.aracne module<a class="headerlink" href="#module-cosifer.inferencers.aracne" title="Permalink to this headline">¶</a></h2>
+<p>Aracne inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.aracne.Aracne">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.aracne.</code><code class="sig-name descname">Aracne</code><span class="sig-paren">(</span><em class="sig-param">estimator</em>, <em class="sig-param">disc='none'</em>, <em class="sig-param">method='ARACNE'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.aracne.Aracne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>Aracne inferencer implementation.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.aracne.Aracne.estimator">
+<code class="sig-name descname">estimator</code><a class="headerlink" href="#cosifer.inferencers.aracne.Aracne.estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimator type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.aracne.Aracne.disc">
+<code class="sig-name descname">disc</code><a class="headerlink" href="#cosifer.inferencers.aracne.Aracne.disc" title="Permalink to this definition">¶</a></dt>
+<dd><p>discretization type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.aracne.Aracne.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.aracne.Aracne.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.clr">
+<span id="cosifer-inferencers-clr-module"></span><h2>cosifer.inferencers.clr module<a class="headerlink" href="#module-cosifer.inferencers.clr" title="Permalink to this headline">¶</a></h2>
+<p>CLR inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.clr.CLR">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.clr.</code><code class="sig-name descname">CLR</code><span class="sig-paren">(</span><em class="sig-param">estimator</em>, <em class="sig-param">disc='none'</em>, <em class="sig-param">method='CLR'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.clr.CLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>CLR inferencer implementation.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.clr.CLR.estimator">
+<code class="sig-name descname">estimator</code><a class="headerlink" href="#cosifer.inferencers.clr.CLR.estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimator type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.clr.CLR.disc">
+<code class="sig-name descname">disc</code><a class="headerlink" href="#cosifer.inferencers.clr.CLR.disc" title="Permalink to this definition">¶</a></dt>
+<dd><p>discretization type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.clr.CLR.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.clr.CLR.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.correlation">
+<span id="cosifer-inferencers-correlation-module"></span><h2>cosifer.inferencers.correlation module<a class="headerlink" href="#module-cosifer.inferencers.correlation" title="Permalink to this headline">¶</a></h2>
+<p>Correlation inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.correlation.Correlation">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.correlation.</code><code class="sig-name descname">Correlation</code><span class="sig-paren">(</span><em class="sig-param">method=None</em>, <em class="sig-param">correction=None</em>, <em class="sig-param">confidence_threshold=0.05</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.correlation.Correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>Correlation inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.correlation.Correlation.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.correlation.Correlation.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>correlation method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.correlation.Correlation.correction">
+<code class="sig-name descname">correction</code><a class="headerlink" href="#cosifer.inferencers.correlation.Correlation.correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>correction method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.correlation.Correlation.confidence_threshold">
+<code class="sig-name descname">confidence_threshold</code><a class="headerlink" href="#cosifer.inferencers.correlation.Correlation.confidence_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>confidence threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">method</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.funchisq">
+<span id="cosifer-inferencers-funchisq-module"></span><h2>cosifer.inferencers.funchisq module<a class="headerlink" href="#module-cosifer.inferencers.funchisq" title="Permalink to this headline">¶</a></h2>
+<p>FunChisq inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.funchisq.FunChisq">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.funchisq.</code><code class="sig-name descname">FunChisq</code><span class="sig-paren">(</span><em class="sig-param">k_min=3</em>, <em class="sig-param">k_max=7</em>, <em class="sig-param">k_step=1</em>, <em class="sig-param">method='FunChisq'</em>, <em class="sig-param">correction=None</em>, <em class="sig-param">confidence_threshold=0.05</em>, <em class="sig-param">undirected=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>FunChisq inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.k_min">
+<code class="sig-name descname">k_min</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.k_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>minimum number of quantization bins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.k_max">
+<code class="sig-name descname">k_max</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.k_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum number of quantization bins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.k_step">
+<code class="sig-name descname">k_step</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.k_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of steps for bins search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.correction">
+<code class="sig-name descname">correction</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>correction method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.confidence_threshold">
+<code class="sig-name descname">confidence_threshold</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.confidence_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>confidence threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.funchisq.FunChisq.undirected">
+<code class="sig-name descname">undirected</code><a class="headerlink" href="#cosifer.inferencers.funchisq.FunChisq.undirected" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag to indicate an undirected network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cosifer.inferencers.funchisq.sort_interaction_entities">
+<code class="sig-prename descclassname">cosifer.inferencers.funchisq.</code><code class="sig-name descname">sort_interaction_entities</code><span class="sig-paren">(</span><em class="sig-param">row</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.funchisq.sort_interaction_entities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the entities over a row in lexicographic order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>row</strong> (<em>pd.Series</em>) – row containing the entities to be sorted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>a list containing the sorted entities and the rest of the</dt><dd><p>elements of the row unchanged.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.genie3">
+<span id="cosifer-inferencers-genie3-module"></span><h2>cosifer.inferencers.genie3 module<a class="headerlink" href="#module-cosifer.inferencers.genie3" title="Permalink to this headline">¶</a></h2>
+<p>GENIE3 inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.genie3.GENIE3">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.genie3.</code><code class="sig-name descname">GENIE3</code><span class="sig-paren">(</span><em class="sig-param">tree_method='RF'</em>, <em class="sig-param">k='sqrt'</em>, <em class="sig-param">n_trees=1000</em>, <em class="sig-param">regulators=rpy2.rinterface.NULL</em>, <em class="sig-param">targets=rpy2.rinterface.NULL</em>, <em class="sig-param">n_cores=4</em>, <em class="sig-param">verbose=False</em>, <em class="sig-param">method='GENIE3'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>GENIE3 inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.tree_method">
+<code class="sig-name descname">tree_method</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.tree_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>tree method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.k">
+<code class="sig-name descname">k</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>k criterion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.n_trees">
+<code class="sig-name descname">n_trees</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.n_trees" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of trees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.regulators">
+<code class="sig-name descname">regulators</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.regulators" title="Permalink to this definition">¶</a></dt>
+<dd><p>known regulators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.targets">
+<code class="sig-name descname">targets</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>known targets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.n_cores">
+<code class="sig-name descname">n_cores</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.n_cores" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of cores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.verbose">
+<code class="sig-name descname">verbose</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>toggle verbosity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.genie3.GENIE3.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.genie3.GENIE3.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.glasso">
+<span id="cosifer-inferencers-glasso-module"></span><h2>cosifer.inferencers.glasso module<a class="headerlink" href="#module-cosifer.inferencers.glasso" title="Permalink to this headline">¶</a></h2>
+<p>Glasso inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.glasso.Glasso">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.glasso.</code><code class="sig-name descname">Glasso</code><span class="sig-paren">(</span><em class="sig-param">correction=None</em>, <em class="sig-param">method='gLasso'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.glasso.Glasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>Glasso inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.glasso.Glasso.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.glasso.Glasso.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.jrf">
+<span id="cosifer-inferencers-jrf-module"></span><h2>cosifer.inferencers.jrf module<a class="headerlink" href="#module-cosifer.inferencers.jrf" title="Permalink to this headline">¶</a></h2>
+<p>JRF inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.jrf.JointRandomForest">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.jrf.</code><code class="sig-name descname">JointRandomForest</code><span class="sig-paren">(</span><em class="sig-param">ntree=500</em>, <em class="sig-param">mtry=None</em>, <em class="sig-param">merger=&lt;function JointRandomForest.&lt;lambda&gt;&gt;</em>, <em class="sig-param">correction=None</em>, <em class="sig-param">method='JRF'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.jrf.JointRandomForest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>JRF inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.jrf.JointRandomForest.ntree">
+<code class="sig-name descname">ntree</code><a class="headerlink" href="#cosifer.inferencers.jrf.JointRandomForest.ntree" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of trees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.jrf.JointRandomForest.mtry">
+<code class="sig-name descname">mtry</code><a class="headerlink" href="#cosifer.inferencers.jrf.JointRandomForest.mtry" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of variables for splitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.jrf.JointRandomForest.merger">
+<code class="sig-name descname">merger</code><a class="headerlink" href="#cosifer.inferencers.jrf.JointRandomForest.merger" title="Permalink to this definition">¶</a></dt>
+<dd><p>a merger function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.jrf.JointRandomForest.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.jrf.JointRandomForest.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.mrnet">
+<span id="cosifer-inferencers-mrnet-module"></span><h2>cosifer.inferencers.mrnet module<a class="headerlink" href="#module-cosifer.inferencers.mrnet" title="Permalink to this headline">¶</a></h2>
+<p>MRNET inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.mrnet.MRNET">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.mrnet.</code><code class="sig-name descname">MRNET</code><span class="sig-paren">(</span><em class="sig-param">estimator</em>, <em class="sig-param">disc='none'</em>, <em class="sig-param">method='MRNET'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.mrnet.MRNET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>MRNET inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.mrnet.MRNET.estimator">
+<code class="sig-name descname">estimator</code><a class="headerlink" href="#cosifer.inferencers.mrnet.MRNET.estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimator type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.mrnet.MRNET.disc">
+<code class="sig-name descname">disc</code><a class="headerlink" href="#cosifer.inferencers.mrnet.MRNET.disc" title="Permalink to this definition">¶</a></dt>
+<dd><p>discretization type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.mrnet.MRNET.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.mrnet.MRNET.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.network_inferencer">
+<span id="cosifer-inferencers-network-inferencer-module"></span><h2>cosifer.inferencers.network_inferencer module<a class="headerlink" href="#module-cosifer.inferencers.network_inferencer" title="Permalink to this headline">¶</a></h2>
+<p>NetworkInferencer abstract interface.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.network_inferencer.NetworkInferencer">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.network_inferencer.</code><code class="sig-name descname">NetworkInferencer</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="cosifer.handlers.html#cosifer.handlers.network_handler.NetworkHandler" title="cosifer.handlers.network_handler.NetworkHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.handlers.network_handler.NetworkHandler</span></code></a></p>
+<p>Network inferencer interface.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.network_inferencer.NetworkInferencer.graph">
+<code class="sig-name descname">graph</code><a class="headerlink" href="#cosifer.inferencers.network_inferencer.NetworkInferencer.graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>graph representing the
+network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>cosifer.collections.graph,<a class="reference internal" href="cosifer.collections.html#cosifer.collections.graph.Graph" title="cosifer.collections.graph.Graph">Graph</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.network_inferencer.NetworkInferencer.trained">
+<code class="sig-name descname">trained</code><a class="headerlink" href="#cosifer.inferencers.network_inferencer.NetworkInferencer.trained" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag to indicate whether the inference has been
+performed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">graph</code><em class="property"> = None</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cosifer.inferencers.network_inferencer.NetworkInferencer.infer_network">
+<code class="sig-name descname">infer_network</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.network_inferencer.NetworkInferencer.infer_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – data to be used for the inference.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">trained</code><em class="property"> = False</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers.tigress">
+<span id="cosifer-inferencers-tigress-module"></span><h2>cosifer.inferencers.tigress module<a class="headerlink" href="#module-cosifer.inferencers.tigress" title="Permalink to this headline">¶</a></h2>
+<p>TIGRESS inferencer.</p>
+<dl class="class">
+<dt id="cosifer.inferencers.tigress.TIGRESS">
+<em class="property">class </em><code class="sig-prename descclassname">cosifer.inferencers.tigress.</code><code class="sig-name descname">TIGRESS</code><span class="sig-paren">(</span><em class="sig-param">tf_list=rpy2.rinterface.NULL</em>, <em class="sig-param">k=-1</em>, <em class="sig-param">alpha=0.2</em>, <em class="sig-param">n_steps_lars=5</em>, <em class="sig-param">n_bootstrap=1000</em>, <em class="sig-param">scoring='area'</em>, <em class="sig-param">verbose=False</em>, <em class="sig-param">use_parallel=True</em>, <em class="sig-param">n_cores=4</em>, <em class="sig-param">method='TIGRESS'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cosifer.inferencers.network_inferencer.NetworkInferencer" title="cosifer.inferencers.network_inferencer.NetworkInferencer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosifer.inferencers.network_inferencer.NetworkInferencer</span></code></a></p>
+<p>TIGRESS inferencer.</p>
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.tf_list">
+<code class="sig-name descname">tf_list</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.tf_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of transcription factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.k">
+<code class="sig-name descname">k</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of edges to return.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.alpha">
+<code class="sig-name descname">alpha</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>alpha parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.n_step_lars">
+<code class="sig-name descname">n_step_lars</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.n_step_lars" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of LARS steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.n_bootstrap">
+<code class="sig-name descname">n_bootstrap</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.n_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>bootstrap number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.scoring">
+<code class="sig-name descname">scoring</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.scoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>scoring criterion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.verbose">
+<code class="sig-name descname">verbose</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>toggle verbosity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.use_parallel">
+<code class="sig-name descname">use_parallel</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.use_parallel" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable parallelism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.n_cores">
+<code class="sig-name descname">n_cores</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.n_cores" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of cores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cosifer.inferencers.tigress.TIGRESS.method">
+<code class="sig-name descname">method</code><a class="headerlink" href="#cosifer.inferencers.tigress.TIGRESS.method" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cosifer.inferencers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cosifer.inferencers" title="Permalink to this headline">¶</a></h2>
+<p>Inferencer module.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cosifer.pipelines.html" class="btn btn-neutral float-right" title="cosifer.pipelines package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cosifer.handlers.html" class="btn btn-neutral float-left" title="cosifer.handlers package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, PhosphorylatedRabbits team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
