@@ -86,18 +86,12 @@ setup(
         'numpy',
         'scipy',
         'seaborn',
-        'tzlocal',
         'pandas',
         'scikit-learn',
-        'networkx',
         'statsmodels',
-        'bioservices',
         'rpy2',
-        'h5py',
-        'autopep8',
-        'pySUMMA'
+        'pySUMMA @ git+https://github.com/learn-ensemble/PY-SUMMA'
     ],
     zip_safe=False,
     scripts=scripts
 )
-
