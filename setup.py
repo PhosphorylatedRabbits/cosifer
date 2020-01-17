@@ -72,9 +72,9 @@ setup(
     version='0.0.1',
     description='COSIFER - Consensus Interaction Network Inference Service',
     long_description=open('README.md').read(),
-    url='https://github.ibm.com/SysBio/cosifer',
+    url='https://github.com/PhosphorylatedRabbits/cosifer',
     author='Matteo Manica',
-    author_email='tte@zurich.ibm.com',
+    author_email='drugilsberg@gmail.com',
     packages=find_packages('.'),
     cmdclass={
         'bdist_egg': bdist_egg,
@@ -100,3 +100,4 @@ setup(
     zip_safe=False,
     scripts=scripts
 )
+
