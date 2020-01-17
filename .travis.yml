@@ -1,0 +1,13 @@
+dist: xenial
+
+sudo: required
+
+before_script:
+  - sudo apt-get update
+  - sudo -H apt-get -y install r-base git r-base libssh2-1-dev cmake build-essentials libgit2-dev
+  # pip > 10.
+  - sudo pip3 install -U setuptools pip
+
+script:
+  - sudo pip3 install -e .
+  - cosifer -h
