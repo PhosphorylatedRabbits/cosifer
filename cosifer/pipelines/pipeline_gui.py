@@ -5,7 +5,6 @@ import logging
 from copy import deepcopy
 from ..inferencers import INFERENCERS, RECOMMENDED_INFERENCERS
 from ..combiners import COMBINERS, RECOMMENDED_COMBINER
-from ..utils.data import standardize
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -97,9 +96,6 @@ def run(data, results_filepath, methods=None, combiner='summa'):
     """
     # make sure the output exists
     os.makedirs(os.path.dirname(results_filepath), exist_ok=True)
-
-    # standardize data
-    data = standardize(data)
 
     # decide on which network inference methods to perform
     selected_methods = method_selection(methods)
