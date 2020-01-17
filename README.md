@@ -32,7 +32,7 @@ cd cosifer
 pip install -U -e .
 ```
 
-# COSIFER executable script
+## COSIFER executable script
 
 The COSIFER executable accept the following arguments:
 
@@ -69,4 +69,8 @@ optional arguments:
                         optional GMT file to perform inference on multiple
                         gene sets.
 ```
+
+## web service
+
+Try out the COSIFER web service for free on [IBM Cloud](http://ibm.biz/cosifer-aas).
 
