@@ -13,7 +13,7 @@ def combine_tables(
     **kwargs
 ):
     """
-     Compute the combined intensities from a list of interaction
+    Compute the combined intensities from a list of interaction
     tables.
 
     Args:

@@ -1,9 +1,9 @@
-.. ipcrg documentation master file, created by
+.. cosifer documentation master file, created by
    sphinx-quickstart on Sun Dec  1 00:34:29 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ipcrg's documentation!
+Welcome to cosifer's documentation!
 =================================
 
 .. toctree::
