@@ -7,6 +7,8 @@
 Inference framework for reconstructing networks using a consensus approach
 between multiple methods and data sources.
 
+The online documentation for the module can be found [here](https://phosphorylatedrabbits.github.io/cosifer).
+
 ## requirements
 
 - Python >= 3.4
