@@ -24,7 +24,7 @@ The online documentation for the module can be found [here](https://phosphorylat
 Install it using `pip` to use it as module:
 
 ```console
-pip install git+https://github.com/TBD/cosifer@master
+pip install git+https://github.com/PhosphorylatedRabbits/cosifer@master
 ```
 
 Or install it via `pip` after cloning (suggested for development):
