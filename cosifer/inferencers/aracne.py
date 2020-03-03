@@ -2,6 +2,7 @@
 import logging
 import pandas as pd
 import numpy as np
+import rpy2.robjects as ro
 from rpy2.robjects import pandas2ri, globalenv, r
 from rpy2.robjects.packages import importr
 from ..collections.graph import Graph
@@ -50,7 +51,7 @@ class Aracne(NetworkInferencer):
         globalenv['estimator'] = self.estimator
         globalenv['disc'] = self.disc
         # compute mutual information matrix
-        globalenv['data'] = pandas2ri.py2ri(data)
+        globalenv['data'] = ro.conversion.py2rpy(data)
         r('''
         mim <- build.mim(
             data, estimator=estimator,
@@ -59,7 +60,7 @@ class Aracne(NetworkInferencer):
         ''')
         mim = globalenv['mim']
         # run Aracne
-        weight_matrix = pandas2ri.ri2py(minet.aracne(mim, eps=0.2))
+        weight_matrix = ro.conversion.rpy2py(minet.aracne(mim, eps=0.2))
         weight_matrix = pd.DataFrame(
             weight_matrix, columns=data.columns, index=data.columns
         )

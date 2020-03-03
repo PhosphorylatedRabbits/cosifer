@@ -86,7 +86,7 @@ setup(
         'numpy',
         'scipy',
         'seaborn',
-        'pandas',
+        'pandas<1.0',
         'scikit-learn',
         'statsmodels',
         'rpy2',

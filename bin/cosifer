@@ -26,15 +26,23 @@ def argument_parser():
                         help='path to the data.')
     parser.add_argument('-o', '--output_directory', required=True,
                         help='path to the output directory.')
-    parser.add_argument('--standardize',
-                        required=False,
-                        default=True,
-                        help='standardize the data. Defaults to True.')
-    parser.add_argument('--samples_on_rows',
-                        required=False,
-                        default=True,
-                        help='rows in the data contain the samples. '
-                             'Defaults to True.')
+    parser.add_argument('--standardize', dest='standardize', action='store_true',
+                        help=(
+                            'flag that indicates whether to perform standardization. '
+                            'Defaults behaviour is to standardize the data.'
+                        ))
+    parser.add_argument('--no-standardize', dest='standardize', action='store_false',
+                        help=(
+                            'flag that indicates whether to suppress standardization. '
+                            'Defaults behaviour is to standardize the data.'
+                        ))
+    parser.set_defaults(standardize=True)
+    parser.add_argument('--samples_on_rows', dest='samples_on_rows', action='store_true',
+                        help=(
+                            'flag that indicates that data contain the samples on rows. '
+                            'Defaults to False.'
+                        ))
+    parser.set_defaults(samples_on_rows=False)
     parser.add_argument('--sep',
                         required=False,
                         default='\t',
@@ -50,6 +58,7 @@ def argument_parser():
     parser.add_argument('--index',
                         required=False,
                         default=None,
+                        type=int,
                         help='column index in the data. Defaults to None, '
                              'a.k.a., no index.')
     parser.add_argument('--methods',

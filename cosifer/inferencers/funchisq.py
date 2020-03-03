@@ -2,6 +2,7 @@
 import logging
 import pandas as pd
 import numpy as np
+import rpy2.robjects as ro
 from rpy2.robjects import pandas2ri
 from rpy2.robjects.packages import importr
 from ..collections.interaction_table import InteractionTable
@@ -121,7 +122,7 @@ class FunChisq(NetworkInferencer):
                     ]
                 )
         # running FunChisq
-        interactions = pandas2ri.ri2py(
+        interactions = ro.conversion.rpy2py(
             fun_chisq.test_interactions(
                 quantized.T.values, list(independent_variables),
                 pd.Series(dependent_variables), entities.values

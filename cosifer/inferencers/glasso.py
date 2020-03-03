@@ -1,7 +1,7 @@
 """Glasso inferencer."""
 import logging
 import pandas as pd
-from sklearn.covariance import GraphLassoCV
+from sklearn.covariance import GraphicalLassoCV
 from ..collections.graph import Graph
 from .network_inferencer import NetworkInferencer
 from ..utils.stats import from_precision_matrix_partial_correlations
@@ -35,7 +35,7 @@ class Glasso(NetworkInferencer):
             data (pd.DataFrame): data to be used for the inference.
         """
         entities = data.columns
-        model = GraphLassoCV(**self.parameters)
+        model = GraphicalLassoCV(**self.parameters)
         model.fit(data.values)
         self.graph = Graph(
             adjacency=pd.DataFrame(

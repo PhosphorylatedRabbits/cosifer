@@ -2,6 +2,7 @@
 import logging
 import pandas as pd
 import numpy as np
+import rpy2.robjects as ro
 from rpy2.robjects import pandas2ri
 from rpy2.robjects.packages import importr
 from ..collections.graph import Graph
@@ -49,9 +50,9 @@ class MRNET(NetworkInferencer):
         # compute number of bins
         self.n_bins = np.sqrt(len(data.index))
         # run MRNET
-        weight_matrix = pandas2ri.ri2py(
+        weight_matrix = ro.conversion.rpy2py(
             minet.minet(
-                pandas2ri.py2ri(data),
+                ro.conversion.py2rpy(data),
                 method='mrnet',
                 estimator=self.estimator,
                 disc=self.disc,

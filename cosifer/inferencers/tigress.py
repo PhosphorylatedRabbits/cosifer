@@ -1,6 +1,7 @@
 """TIGRESS inferencer."""
 import logging
 import numpy as np
+import rpy2.robjects as ro
 from rpy2.robjects import pandas2ri, r, globalenv
 from rpy2.robjects.packages import importr
 from rpy2.rinterface import NULL
@@ -182,9 +183,9 @@ class TIGRESS(NetworkInferencer):
         }
         ''')
         tigress = globalenv['tigress']
-        interactions = pandas2ri.ri2py(
+        interactions = ro.conversion.rpy2py(
             tigress(
-                pandas2ri.py2ri(data), self.tf_list, self.k, self.alpha,
+                ro.conversion.py2rpy(data), self.tf_list, self.k, self.alpha,
                 self.n_steps_lars, self.n_bootstrap, self.scoring,
                 self.verbose, self.use_parallel, self.n_cores
             )[0]

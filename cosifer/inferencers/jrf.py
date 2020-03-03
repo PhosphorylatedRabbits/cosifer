@@ -1,6 +1,7 @@
 """JRF inferencer."""
 import logging
 import numpy as np
+import rpy2.robjects as ro
 from rpy2.robjects import pandas2ri
 from rpy2.robjects.packages import importr
 from ..collections.interaction_table import InteractionTable
@@ -76,7 +77,7 @@ class JointRandomForest(NetworkInferencer):
                 )
             )
             raise RuntimeError('mtry is bigger than the number of predictors.')
-        interactions = pandas2ri.ri2py(
+        interactions = ro.conversion.rpy2py(
             jrf.JRF(
                 [data.T.values], self.ntree,
                 self.mtry if self.mtry else int(np.sqrt(number_of_predictors)),
@@ -106,7 +107,7 @@ class JointRandomForest(NetworkInferencer):
                 )
             )
             raise RuntimeError('mtry is bigger than the number of predictors.')
-        interactions = pandas2ri.ri2py(
+        interactions = ro.conversion.rpy2py(
             jrf.JRF(
                 [data.T.values for data in data_list], self.ntree,
                 self.mtry if self.mtry else int(np.sqrt(number_of_predictors)),

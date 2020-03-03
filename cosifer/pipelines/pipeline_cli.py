@@ -1,5 +1,4 @@
 """COSIFER client pipeline."""
-import sys
 import os
 import logging
 from copy import deepcopy
@@ -51,11 +50,12 @@ def run_inference(data, selected_methods, output_directory):
                 inferencer.filepath = output_filepath
                 inferencer.load()
                 inferencer.infer_network(data)
+                # NOTE: allow retraining on new data
+                inferencer.trained = False
             else:
                 logger.info(
-                    'inference already run and stored in {}'.format(
-                        output_filepath
-                    )
+                    'inference already run and stored in {}'.
+                    format(output_filepath)
                 )
         except Exception:
             logger.exception('error with inferencer {}'.format(name))
@@ -99,30 +99,38 @@ def run_combiner(combiner_name, interaction_tables_dict, output_directory):
             output_directory, combiner_name
         )
         if not os.path.exists(output_filepath):
-            logger.info('start combination with method {}'.format(
-                combiner_name
-            ))
+            logger.info(
+                'start combination with method {}'.format(combiner_name)
+            )
             combiner = deepcopy(
                 COMBINERS.get(combiner_name, COMBINERS[RECOMMENDED_COMBINER])
             )
             combiner.filepath = output_filepath
             combiner.load()
             combiner.combine(interaction_tables_dict.values())
+            # NOTE: allow retraining on new data
+            combiner.trained = False
         else:
             logger.info(
-                'combination already run and stored in {}'.format(
-                    output_filepath
-                )
+                'combination already run and stored in {}'.
+                format(output_filepath)
             )
     except Exception:
         logger.exception('error with combiner {}'.format(combiner_name))
 
 
 def run(
-    filepath, output_directory,
-    standardize=True, samples_on_rows=True, sep='\t',
-    fillna=0., header=0, index_col=0,
-    methods=None, combiner=None, gmt_filepath=None,
+    filepath,
+    output_directory,
+    standardize=True,
+    samples_on_rows=True,
+    sep='\t',
+    fillna=0.,
+    header=0,
+    index_col=0,
+    methods=None,
+    combiner=None,
+    gmt_filepath=None,
     **kwargs
 ):
     """
@@ -156,8 +164,13 @@ def run(
     _ = kwargs.pop('header', None)
     _ = kwargs.pop('index_col', None)
     data = read_data(
-        filepath, standardize=standardize, samples_on_rows=samples_on_rows,
-        sep=sep, header=header, index_col=index_col, fillna=fillna,
+        filepath,
+        standardize=standardize,
+        samples_on_rows=samples_on_rows,
+        sep=sep,
+        header=header,
+        index_col=index_col,
+        fillna=fillna,
         **kwargs
     )
     # select the methods
@@ -171,17 +184,31 @@ def run(
     # run inference and combination
     for feature_name, feature_set in feature_sets.items():
         # create a directory to store the results
-        results_output_directory = os.path.join(
-            output_directory, feature_name
-        )
+        results_output_directory = os.path.join(output_directory, feature_name)
         os.makedirs(results_output_directory, exist_ok=True)
-        # run the inference methods
-        run_inference(
-            data[list(feature_set)], selected_methods, results_output_directory
-        )
-        if combiner is not None:
-            # run the combination
-            run_combiner(
-                combiner, get_interaction_tables(results_output_directory),
+        # select features discarding missing ones
+        matching_features = list(set(data.columns) & feature_set)
+        if len(matching_features) > 2:
+            # run the inference methods
+            run_inference(
+                data[matching_features], selected_methods,
                 results_output_directory
+            )
+            if combiner is not None:
+                # get the inferred tables
+                tables = get_interaction_tables(results_output_directory)
+                if len(tables) > 1:
+                    # run the combination
+                    run_combiner(combiner, tables, results_output_directory)
+                elif len(tables):
+                    logger.warn(
+                        'skipping consenus since a single network has been inferred'
+                    )
+                else:
+                    logger.warn(
+                        'no networks to combine were found'
+                    )
+        else:
+            logger.warn(
+                'inference on less than three features is not supported'
             )
