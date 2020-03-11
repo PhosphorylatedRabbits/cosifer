@@ -52,6 +52,8 @@ The user can easily use a custom set of methods and a different combiner just tw
 cosifer -i rppa-processed.tsv.zip --index 0 --methods pearson --methods aracne --methods clr --methods mrnet --combiner snf -o results/rppa-custom
 ```
 
+The outputs produced are stored following the same convention used in the default case:
+
 ```console
 ls -rt1 results/rppa-custom
 mrnet.csv.gz
