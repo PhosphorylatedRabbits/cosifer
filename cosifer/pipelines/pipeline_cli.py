@@ -23,7 +23,7 @@ def method_selection(methods=None):
     """
     # add desired methods to list of methods and removal of duplicates
     if methods is not None:
-        selected_methods = set(RECOMMENDED_INFERENCERS).union(set(methods))
+        selected_methods = set(INFERENCERS).intersection(set(methods))
     # return dictionary containing only the chosen methods
     return dict(
         (method, deepcopy(INFERENCERS[method]))

@@ -128,3 +128,7 @@ notebooks/*log
 graph-tool*
 aracne
 *egg-info*
+
+# custom
+resultss
+examples/tcga-brca/results

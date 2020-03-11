@@ -87,6 +87,10 @@ optional arguments:
                         gene sets.
 ```
 
+## examples
+
+In the folder [examples](./examples), you can find applications of COSIFER consensus network inference.
+
 ## web service
 
 Try out the COSIFER web service for free on [IBM Cloud](http://ibm.biz/cosifer-aas).
