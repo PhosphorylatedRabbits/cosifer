@@ -22,12 +22,14 @@ def method_selection(methods=None):
         dict: a dictionary keyed by method name and inferencers as values.
     """
     # add desired methods to list of methods and removal of duplicates
-    if methods is not None:
-        selected_methods = set(INFERENCERS).intersection(set(methods))
+    selected_methods = (
+        set(INFERENCERS).intersection(set(methods))
+        if methods else RECOMMENDED_INFERENCERS
+    )
     # return dictionary containing only the chosen methods
     return dict(
         (method, deepcopy(INFERENCERS[method]))
-        for method in set(INFERENCERS) & selected_methods
+        for method in selected_methods
     )
 
 
@@ -163,6 +165,7 @@ def run(
     _ = kwargs.pop('sep', None)
     _ = kwargs.pop('header', None)
     _ = kwargs.pop('index_col', None)
+    logger.info('reading data from {}'.format(filepath))
     data = read_data(
         filepath,
         standardize=standardize,
@@ -173,10 +176,13 @@ def run(
         fillna=fillna,
         **kwargs
     )
+    logger.debug('parsed data with shape {}'.format(data.shape))
     # select the methods
     selected_methods = method_selection(methods)
+    logger.debug(selected_methods)
     # optional gmt
     if gmt_filepath is not None:
+        logger.info('reading gene sets from {}'.format(gmt_filepath))
         feature_sets = read_gmt(gmt_filepath)
     else:
         feature_sets = {'': set(data.columns)}
@@ -205,9 +211,7 @@ def run(
                         'skipping consenus since a single network has been inferred'
                     )
                 else:
-                    logger.warn(
-                        'no networks to combine were found'
-                    )
+                    logger.warn('no networks to combine were found')
         else:
             logger.warn(
                 'inference on less than three features is not supported'

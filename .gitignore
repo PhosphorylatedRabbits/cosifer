@@ -130,5 +130,7 @@ aracne
 *egg-info*
 
 # custom
-resultss
+results
+*gmt
 examples/tcga-brca/results
+examples/tcga-brca/*gmt
