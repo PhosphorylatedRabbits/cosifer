@@ -1,10 +1,10 @@
-dist: xenial
+dist: bionic
 
 sudo: required
 
 before_script:
   - sudo apt-get update
-  - sudo -H apt-get -y install r-base git r-base libssh2-1-dev cmake build-essential libgit2-dev
+  - sudo -H apt-get -y install r-base git r-base libssh2-1-dev cmake build-essential libgit2-dev python3-pip python3-dev
   # pip > 10.
   - sudo pip3 install -U setuptools pip
 
