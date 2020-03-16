@@ -9,5 +9,5 @@ before_script:
   - sudo pip3 install -U setuptools pip
 
 script:
-  - sudo pip3 install -e .
+  - sudo pip3 install -v -e .
   - cosifer -h
