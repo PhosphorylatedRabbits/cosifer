@@ -1,11 +1,16 @@
 dist: bionic
 
+language: r
+
+r:
+  - release
+
 sudo: required
 
 before_script:
-  - sudo echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" >> /etc/apt/sources.list
-  - sudo apt-get --allow-unauthenticated update
-  - sudo -H apt-get --allow-unauthenticated -y install r-base r-base-dev git r-base libssh2-1-dev cmake build-essential libgit2-dev python3-pip python3-dev
+  - echo ${TRAVIS_R_VERSION_STRING}
+  - sudo apt-get update
+  - sudo -H apt-get -y install r-base r-base-dev git r-base libssh2-1-dev cmake build-essential libgit2-dev python3-pip python3-dev
   # pip > 10.
   - sudo pip3 install -U setuptools pip
 
