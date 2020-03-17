@@ -7,8 +7,7 @@ r:
 
 sudo: required
 
-before_script:
-  - echo ${TRAVIS_R_VERSION_STRING}
+install:
   - sudo apt-get update
   - sudo -H apt-get -y install r-base r-base-dev git r-base libssh2-1-dev cmake build-essential libgit2-dev python3-pip python3-dev
   # pip > 10.
