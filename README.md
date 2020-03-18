@@ -11,8 +11,8 @@ The online documentation for the module can be found [here](https://phosphorylat
 
 ## requirements
 
-- Python >= 3.4
-- R >= 3.3.0
+- Python >= 3.6
+- R >= 3.6.0
 - pip
 - wget
 - build-essential (make, g++, cmake)
