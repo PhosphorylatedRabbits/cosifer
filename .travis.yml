@@ -1,4 +1,4 @@
-dist: .6
+dist: xenial
 
 language: r
 
@@ -10,7 +10,8 @@ sudo: required
 install:
   - sudo add-apt-repository ppa:deadsnakes/ppa -y
   - sudo apt-get update
-  - sudo -H apt-get -y install r-base r-base-dev git r-base libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev python3.6-pip
+  - sudo -H apt-get -y install git libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev
+  - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
   # pip > 10.
   - sudo pip3 install -U setuptools pip
 
