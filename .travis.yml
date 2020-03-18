@@ -8,7 +8,7 @@ r:
 sudo: required
 
 install:
-  - sudo add-apt-repository ppa:jonathonf/python-3.6
+  - sudo add-apt-repository ppa:deadsnakes/ppa
   - sudo apt-get update
   - sudo -H apt-get -y install r-base r-base-dev git r-base libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev python3.6-pip
   # pip > 10.
