@@ -1,13 +1,18 @@
-dist: bionic
+dist: xenial
+
+language: r
+
+r:
+  - release
 
 sudo: required
 
-before_script:
+install:
+  - sudo add-apt-repository ppa:deadsnakes/ppa -y
   - sudo apt-get update
-  - sudo -H apt-get -y install r-base git r-base libssh2-1-dev cmake build-essential libgit2-dev python3-pip python3-dev
-  # pip > 10.
-  - sudo pip3 install -U setuptools pip
+  - sudo -H apt-get -y install git libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev
+  - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
 
 script:
-  - sudo pip3 install -e .
-  - cosifer -h
+  - python3.6 -m pip install --user -e .
+  -  LD_LIBRARY_PATH=/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
