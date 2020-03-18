@@ -12,9 +12,7 @@ install:
   - sudo apt-get update
   - sudo -H apt-get -y install git libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev
   - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
-  # pip > 10.
-  - sudo pip3 install -U setuptools pip
 
 script:
-  - sudo pip3 install -v -e .
+  - python3.6 -m pip install --user -e .
   - cosifer -h
