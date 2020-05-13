@@ -80,9 +80,6 @@ def run_combiner(combiner_name, interaction_tables_dict, results_filepath):
         )
         combiner.filepath = results_filepath
         combiner.load()
-        for n, t in interaction_tables_dict.items():
-            logger.info(n)
-            logger.info(t.df)
         combiner.combine(interaction_tables_dict.values())
     except Exception:
         logger.exception('error with combiner {}'.format(combiner_name))
