@@ -22,12 +22,14 @@ def method_selection(methods=None):
         dict: a dictionary keyed by method name and inferencers as values.
     """
     # add desired methods to list of methods and removal of duplicates
-    if methods is not None:
-        selected_methods = set(RECOMMENDED_INFERENCERS).union(set(methods))
+    selected_methods = (
+        set(INFERENCERS).intersection(set(methods))
+        if methods else RECOMMENDED_INFERENCERS
+    )
     # return dictionary containing only the chosen methods
     return dict(
         (method, deepcopy(INFERENCERS[method]))
-        for method in set(INFERENCERS) & selected_methods
+        for method in selected_methods
     )
 
 
@@ -78,6 +80,9 @@ def run_combiner(combiner_name, interaction_tables_dict, results_filepath):
         )
         combiner.filepath = results_filepath
         combiner.load()
+        for n, t in interaction_tables_dict.items():
+            logger.info(n)
+            logger.info(t.df)
         combiner.combine(interaction_tables_dict.values())
     except Exception:
         logger.exception('error with combiner {}'.format(combiner_name))

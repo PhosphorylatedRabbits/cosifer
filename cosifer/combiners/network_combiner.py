@@ -26,7 +26,11 @@ class NetworkCombiner(NetworkHandler):
             logger.info('{} already trained'.format(self))
         else:
             logger.info('{} not trained yet. combine.'.format(self))
-            self._combine(results_list)
+            self._combine([
+                interaction_table
+                for interaction_table in results_list
+                if not interaction_table.df.empty
+            ])
             self.trained = True
             self.dump()
 
