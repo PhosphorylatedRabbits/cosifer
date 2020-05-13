@@ -115,4 +115,4 @@ def run(data, results_filepath, methods=None, combiner='summa'):
         interaction_table.df.to_csv(results_filepath, compression='gzip')
     else:
         # run a consensus strategy to combine the results of the single methods
-        run(combiner, interaction_tables_dict, results_filepath)
+        run_combiner(combiner, interaction_tables_dict, results_filepath)
