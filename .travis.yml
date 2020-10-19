@@ -14,5 +14,5 @@ install:
   - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
 
 script:
-  - python3.6 -m pip install -v --user -e .
+  - python3.6 -m pip install --user -e .
   -  LD_LIBRARY_PATH=/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
