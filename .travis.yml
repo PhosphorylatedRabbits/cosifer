@@ -16,4 +16,4 @@ install:
   - sudo ldconfig
 
 script:
-  - LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/travis/R-bin/lib/R/lib/ cosifer -h
+  - cosifer -h
