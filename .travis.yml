@@ -15,4 +15,5 @@ install:
 
 script:
   - python3.6 -m pip install --user -e .
-  -  LD_LIBRARY_PATH=/opt/R/3.6.3/lib/R/library/methods/libs/:/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
+  - sudo ldconfig
+  - LD_LIBRARY_PATH=/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
