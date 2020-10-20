@@ -12,8 +12,8 @@ install:
   - sudo apt-get update
   - sudo -H apt-get -y install git libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev
   - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
-
-script:
   - python3.6 -m pip install --user -e .
   - sudo ldconfig
-  - LD_LIBRARY_PATH=/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
+
+script:
+  - LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/travis/R-bin/lib/R/lib/ cosifer -h
