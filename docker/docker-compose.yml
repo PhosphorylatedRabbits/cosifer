@@ -6,3 +6,15 @@ services:
       dockerfile: docker/Dockerfile
     image: cosifer
     container_name: "cosifer-app-container"
+  notebook:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile_jupyter
+    ports:
+    - "8888:8888"
+    volumes:
+    - type: bind
+      source: /Users/dow/public_dev/cosifer_fork/notebooks
+      target: /home/ipc/notebooks
+    image: cosifer_notebook
+    container_name: "cosifer-notebook-container"
