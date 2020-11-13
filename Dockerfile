@@ -2,9 +2,9 @@
 FROM tsenit/cosifer@sha256:5ededf33aaa884202d9c437abfccdc28259591f99bc39833a933126bb931cb82
 RUN pip install --no-cache-dir notebook==5.*
 # add user to run the app
-ARG NB_USER=ipc
+# ARG NB_USER=ipc avoid conflict with cosifer app user
 ARG NB_UID=1000
-ENV USER ${NB_USER}
+ENV USER ipc
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 

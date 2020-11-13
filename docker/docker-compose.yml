@@ -9,7 +9,7 @@ services:
   notebook:
     build:
       context: ..
-      dockerfile: docker/Dockerfile_jupyter
+      dockerfile: Dockerfile
     ports:
     - "8888:8888"
     volumes:
