@@ -1,0 +1,6 @@
+docs/
+docs_source/
+.git*
+.travis.yml
+travis/
+dev_requirements.txt

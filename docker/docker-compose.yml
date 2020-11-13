@@ -1,0 +1,8 @@
+version: "3"
+services:
+  cosifer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: cosifer
+    container_name: "cosifer-app-container"
