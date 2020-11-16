@@ -4,3 +4,5 @@ docs_source/
 .travis.yml
 travis/
 dev_requirements.txt
+notebooks/
+data/

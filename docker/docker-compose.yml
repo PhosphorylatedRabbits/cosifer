@@ -4,17 +4,18 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    image: cosifer
-    container_name: "cosifer-app-container"
+    image: tsenit/cosifer
+    container_name: "cosifer-cli-container"
+    volumes:
+    - ../data:/data
   notebook:
     build:
       context: ..
       dockerfile: Dockerfile
+    image: tsenit/cosifer_notebook
+    container_name: "cosifer-notebook-container"
     ports:
     - "8888:8888"
     volumes:
-    - type: bind
-      source: /Users/dow/public_dev/cosifer_fork/notebooks
-      target: /home/ipc/notebooks
-    image: cosifer_notebook
-    container_name: "cosifer-notebook-container"
+    - ../data:/data
+    - ../notebooks:/home/cosifer/notebooks

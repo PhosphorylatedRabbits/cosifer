@@ -1,32 +1,12 @@
-# intermediate image for dependencies
-FROM tsenit/cosifer@sha256:5ededf33aaa884202d9c437abfccdc28259591f99bc39833a933126bb931cb82
+# intermediate image for dependencies and user "cosifer" setup
+FROM tsenit/cosifer
 RUN pip install --no-cache-dir notebook==5.*
-# add user to run the app
-# ARG NB_USER=ipc avoid conflict with cosifer app user
-ARG NB_UID=1000
-ENV USER ipc
-ENV NB_UID ${NB_UID}
-ENV HOME /home/${NB_USER}
-
-# RUN adduser --disabled-password \
-#     --gecos "Default user" \
-#     --uid ${NB_UID} \
-#     ${NB_USER}
-
-COPY examples ${HOME}/examples
-# notebooks is not copied, but will be mounted
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-# make R libraries visible to the app user
-RUN find /root -type d -exec chmod 777 {} \; && find /root -type f -exec chmod 666 {} \;
-USER ${NB_USER}
-
-ENV R_LIBS_USER /usr/local/lib/R/site-library
-ENV LD_LIBRARY_PATH /usr/local/lib/R/lib
-
-
+ENV HOME /home/cosifer
+COPY examples/ ${HOME}/examples/
+RUN chown -R cosifer ${HOME}
 # run jupyter
+USER cosifer
 WORKDIR ${HOME}
 EXPOSE 8888
 ENTRYPOINT []
-CMD [ "jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD [ "jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0"]

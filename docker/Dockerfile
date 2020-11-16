@@ -34,16 +34,14 @@ RUN pip3 install --no-index -f /pip-packages/ /pip-packages/*
 COPY . .
 RUN pip3 install -v -v -v --no-deps -e .
 # add user to run the app
-RUN adduser --disabled-password --gecos '' ipc
-RUN chown -R ipc:ipc /app
+RUN adduser --disabled-password --gecos '' cosifer --uid 1000
+RUN chown -R cosifer:cosifer /app
 # make R libraries visible to the app user
 RUN find /root -type d -exec chmod 777 {} \; && find /root -type f -exec chmod 666 {} \;
 ENV R_LIBS_USER /usr/local/lib/R/site-library
 ENV LD_LIBRARY_PATH /usr/local/lib/R/lib
-# define the app name
-ENV APP_NAME cosifer
 # run cosifer
 WORKDIR /
-COPY docker/entrypoint_cosifer.sh .
-ENTRYPOINT ["./entrypoint_cosifer.sh"]
+COPY docker/entrypoint_cli.sh .
+ENTRYPOINT ["./entrypoint_cli.sh"]
 CMD [ "--help" ]
