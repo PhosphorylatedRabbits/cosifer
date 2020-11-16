@@ -1,8 +1,7 @@
 docs/
 docs_source/
 .git*
-.travis.yml
-travis/
+.travis*
 dev_requirements.txt
 notebooks/
 data/
