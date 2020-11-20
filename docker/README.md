@@ -3,8 +3,15 @@ cosifer depends on both python and R. Via docker we provide an platform
 independent environment to use the command line interface, and an additional 
 image to use  cosifer as a library via jupyter notebooks.  
 
+If you have a clone of the repo, you can quickly download both images from
+DockerHub with
+```
+docker-compose -f docker/docker-compose.yml pull
+```
+
+
 ## CLI
-The cosifer image is published on DockerHub, and can be run like this:
+The cosifer image could be run like this:
 ```console
 docker --rm run tsenit/cosifer --help
 ```
@@ -12,8 +19,9 @@ However, as cosifer reads and writes files, you will have to make sure the
 docker container has appropriate access. This boils down to bind mounting the 
 source and target directories, which can be done modifying the `docker` call, 
 adding the `--volume` flag and arguments.  
-We recommend using a small docker-compose.yml, like it can be found on 
-[GitHub](https://github.com/PhosphorylatedRabbits/cosifer/docker/docker-compose.yml)
+
+We recommend using a small docker-compose.yml, like it can be found in the
+[GitHub repo](https://github.com/PhosphorylatedRabbits/cosifer/docker/docker-compose.yml).
 
 
 For example this docker-compose.yml:
@@ -65,6 +73,8 @@ services:
     - ./notebooks:/home/cosifer/notebooks
 ```
 
+Start the jupyter notebook server with
 ```
 docker-compose -f docker-compose.yml up notebook
 ```
+and use the url in the logs to open the notebook in the browser.

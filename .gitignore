@@ -135,3 +135,4 @@ results
 examples/tcga-brca/results
 examples/tcga-brca/*gmt
 docs_source/_build/
+examples/interactive/demo.py
