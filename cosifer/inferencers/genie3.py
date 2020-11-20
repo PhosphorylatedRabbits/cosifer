@@ -1,12 +1,16 @@
 """GENIE3 inferencer."""
 import logging
+
 import pandas as pd
-from rpy2.robjects import pandas2ri, numpy2ri, r, globalenv
-from rpy2.robjects.packages import importr
 from rpy2.rinterface import NULL
+from rpy2.rinterface import baseenv as baseenv_ri
+from rpy2.robjects import pandas2ri
+from rpy2.robjects.packages import importr
+
 from ..collections.graph import Graph
 from .network_inferencer import NetworkInferencer
 
+as_matrix = baseenv_ri['as.matrix']
 logger = logging.getLogger(__name__.split('.')[-1])
 
 
@@ -59,21 +63,14 @@ class GENIE3(NetworkInferencer):
         importr('foreach')
         importr('doParallel')
         # transform pandas dataframe into GENIE3 input format
-        globalenv['r_matrix'] = numpy2ri.py2ri(data.T.values)
-        globalenv['r_rows'] = data.columns
-        globalenv['r_cols'] = data.index
-        r('''
-        rownames(r_matrix) <- c(r_rows)
-        colnames(r_matrix) <- c(r_cols)
-        ''')
-        expr_matrix = globalenv['r_matrix']
+        # via first automatic conversion to data.frame from pd.DataFrame
+        # to matrix with `as.matrix` to preserve colnames and rownames
+        expr_matrix = as_matrix(pandas2ri.py2rpy(data.T))
         # run GENIE3
-        values = numpy2ri.ri2py(
-            genie3.GENIE3(
+        values = genie3.GENIE3(
                 expr_matrix, self.regulators, self.targets, self.tree_method,
                 self.k, self.n_trees, self.n_cores, self.verbose
             )
-        )
         weight_matrix = pd.DataFrame(
             values, columns=data.columns, index=data.columns
         )
