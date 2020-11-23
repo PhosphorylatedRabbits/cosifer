@@ -28,11 +28,14 @@ class setup_cosifer(Command):
 
     def run(self):
         """Run installation of R dependencies."""
-        subprocess.call(
-            [
+        try:
+            subprocess.check_call([
                 os.path.join(SETUP_DIR, 'setup_cosifer.sh')
-            ]
-        )
+            ])
+        except subprocess.CalledProcessError as error:
+            raise EnvironmentError(
+                f"Failed installion of R dependencies via {error.cmd}."
+            )
 
 
 class build(_build):
