@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/PhosphorylatedRabbits/cosifer.svg?branch=master)](https://travis-ci.com/PhosphorylatedRabbits/cosifer)
+
 # COSIFER - COnSensus Interaction Network InFErence Service
 
 <p align="center">
