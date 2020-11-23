@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.com/PhosphorylatedRabbits/cosifer.svg?branch=master)](https://travis-ci.com/PhosphorylatedRabbits/cosifer)
-
+![COSIFER as a service](https://img.shields.io/badge/webservice-IBM%20Cloud-blue)
+[![GitHub Pages](https://img.shields.io/badge/docs-API-blue)](https://phosphorylatedrabbits.github.io/cosifer)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PhosphorylatedRabbits/cosifer/HEAD)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/tsenit/cosifer)
 # COSIFER - COnSensus Interaction Network InFErence Service
 
 <p align="center">

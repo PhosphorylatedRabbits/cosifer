@@ -47,11 +47,10 @@ so you will find the results under `your/local/path/to/data/output_directory/`
 
 
 ## Jupyter Notebook
-<!-- TODO Binder badge -->
 you might want use cosifer directly in python, and for that we provide an image 
 running cosifer in a jupyter notebook. This allows more control over your 
-workflow/pipeline. Try out an example interactively via binder!
-<!-- TODO Binder link -->
+workflow/pipeline. Try out an example interactively via binder!  
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PhosphorylatedRabbits/cosifer/HEAD)
 
 Moreover, the Dockerfile might serve as an example to build your 
 own image where you can add your dependencies.
