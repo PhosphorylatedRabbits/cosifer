@@ -32,7 +32,7 @@ WORKDIR /app/
 RUN pip3 install --no-index -f /pip-packages/ /pip-packages/*
 # install app
 COPY . .
-RUN pip3 install -v -v -v --no-deps -e .
+RUN pip3 install -v --no-deps -e .
 # add user to run the app
 RUN adduser --disabled-password --gecos '' cosifer --uid 1000
 RUN chown -R cosifer:cosifer /app
