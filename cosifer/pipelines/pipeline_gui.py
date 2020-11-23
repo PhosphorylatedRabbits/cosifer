@@ -36,7 +36,7 @@ def method_selection(methods=None):
 def run_inference(data, selected_methods):
     """
     Perform network inference of the data given a set of methods
-    and save the predicted graphs in an output directory.
+    and return the predicted graphs.
 
     Args:
         data (pd.DataFrame): input dataframe.
@@ -102,7 +102,7 @@ def run(data, results_filepath, methods=None, combiner='summa'):
     # decide on which network inference methods to perform
     selected_methods = method_selection(methods)
 
-    if len(methods) < 1:
+    if len(selected_methods) < 1:
         raise RuntimeError('No valid methods passed!')
 
     # run inference methods

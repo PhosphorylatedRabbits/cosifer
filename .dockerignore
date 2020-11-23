@@ -1,0 +1,7 @@
+docs/
+docs_source/
+.git*
+.travis*
+dev_requirements.txt
+notebooks/
+data/

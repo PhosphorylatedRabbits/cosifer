@@ -1,18 +1,21 @@
 dist: xenial
-
-language: r
-
-r:
-  - release
-
-sudo: required
+services: docker
 
 install:
-  - sudo add-apt-repository ppa:deadsnakes/ppa -y
-  - sudo apt-get update
-  - sudo -H apt-get -y install git libssh2-1-dev cmake build-essential libgit2-dev python3.6-dev
-  - curl https://bootstrap.pypa.io/get-pip.py | sudo -H python3.6
+  - docker-compose -f docker/docker-compose.yml build
 
 script:
-  - python3.6 -m pip install --user -e .
-  -  LD_LIBRARY_PATH=/home/travis/R-bin/lib/R/lib/:${LD_LIBRARY_PATH} cosifer -h
+  - docker run --rm --entrypoint=/bin/bash tsenit/cosifer -c "command -v python3"
+  - docker run --rm --entrypoint=/bin/bash tsenit/cosifer -c "python3 --version"
+  - docker run --rm --entrypoint=/bin/bash tsenit/cosifer -c "R --version"
+  - docker run --rm --entrypoint=pip3 tsenit/cosifer show cosifer
+  - docker run --rm --entrypoint=python3 tsenit/cosifer -c "import cosifer"
+  # - docker run --entrypoint=Rscript tsenit/cosifer -e "installed.packages()"
+  - docker run --rm --volume `pwd`/examples/interactive:/data/demo --entrypoint=python3 tsenit/cosifer /app/docker/test_methods.py
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: sh .travis/deploy.sh
+  on:
+    branch: master
+

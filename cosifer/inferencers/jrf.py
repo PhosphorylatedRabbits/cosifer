@@ -10,6 +10,10 @@ from .network_inferencer import NetworkInferencer
 logger = logging.getLogger(__name__.split('.')[-1])
 
 
+def add(x, y):
+    return x + y
+
+
 class JointRandomForest(NetworkInferencer):
     """
     JRF inferencer.
@@ -25,7 +29,7 @@ class JointRandomForest(NetworkInferencer):
         self,
         ntree=500,
         mtry=None,
-        merger=lambda x, y: x + y,
+        merger=add,
         correction=None,
         method='JRF',
         **kwargs

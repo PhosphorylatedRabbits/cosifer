@@ -1,0 +1,21 @@
+version: "3"
+services:
+  cosifer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: tsenit/cosifer
+    container_name: "cosifer-cli-container"
+    volumes:
+    - ../data:/data
+  notebook:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: tsenit/cosifer_notebook
+    container_name: "cosifer-notebook-container"
+    ports:
+    - "8888:8888"
+    volumes:
+    - ../data:/data
+    - ../notebooks:/home/cosifer/notebooks

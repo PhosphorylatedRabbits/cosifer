@@ -28,11 +28,14 @@ class setup_cosifer(Command):
 
     def run(self):
         """Run installation of R dependencies."""
-        subprocess.call(
-            [
+        try:
+            subprocess.check_call([
                 os.path.join(SETUP_DIR, 'setup_cosifer.sh')
-            ]
-        )
+            ])
+        except subprocess.CalledProcessError as error:
+            raise EnvironmentError(
+                f"Failed installion of R dependencies via {error.cmd}."
+            )
 
 
 class build(_build):
@@ -69,12 +72,12 @@ scripts = ['bin/cosifer']
 
 setup(
     name='cosifer',
-    version='0.0.1',
+    version='0.0.2',
     description='COSIFER - Consensus Interaction Network Inference Service',
     long_description=open('README.md').read(),
     url='https://github.com/PhosphorylatedRabbits/cosifer',
-    author='Matteo Manica',
-    author_email='drugilsberg@gmail.com',
+    author='Matteo Manica, Joris Cadow',
+    author_email='drugilsberg@gmail.com, joriscadow@gmail.com',
     packages=find_packages('.'),
     cmdclass={
         'bdist_egg': bdist_egg,
