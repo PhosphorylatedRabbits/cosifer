@@ -216,8 +216,8 @@ class Graph(object):
         min_value, max_value = (
             scaled_graph[i, j].min(), scaled_graph[i, j].max()
         )
-        scaled_graph[i, j] = (
-            scaled_graph[i, j] - min_value + EPSILON
+        scaled_graph[i[:, np.newaxis], j] = (
+            scaled_graph[i[:, np.newaxis], j] - min_value + EPSILON
         ) / (max_value - min_value + EPSILON)
         return scaled_graph
 
