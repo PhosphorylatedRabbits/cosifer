@@ -1,29 +1,13 @@
 """Graph class."""
-import scipy
 import logging
 import numpy as np
 import pandas as pd
 import scipy.sparse as ss
-from packaging import version
 
 logger = logging.getLogger(__name__.split('.')[-1])
 
-ADVANCED_INDEXING = version.parse(scipy.__version__) >= version.parse('1.3.0')
 SPARSE_MATRIX = ss.csr_matrix
 EPSILON = np.finfo(float).eps
-
-if ADVANCED_INDEXING:
-    def _scale_graph(graph, i, j, min_value, max_value):
-        """Scale sparse graph adjacency in-place"""
-        graph[i[:, np.newaxis], j] = (
-            graph[i[:, np.newaxis], j] - min_value + EPSILON
-        ) / (max_value - min_value + EPSILON)
-else:
-    def _scale_graph(graph, i, j, min_value, max_value):
-        """Scale sparse graph adjacency in-place"""
-        graph[i, j] = (
-            graph[i, j] - min_value + EPSILON
-        ) / (max_value - min_value + EPSILON)
 
 
 class Graph(object):
@@ -228,11 +212,13 @@ class Graph(object):
             spicy.sparse.csr_matrix: the min-max scaled adjacency.
         """
         scaled_graph = np.abs(self.adjacency)
-        i, j = scaled_graph.nonzero()
+        # scaling based on non-zero elements
         min_value, max_value = (
-            scaled_graph[i, j].min(), scaled_graph[i, j].max()
+            scaled_graph.data.min(), scaled_graph.data.max()
         )
-        _scale_graph(scaled_graph, i, j, min_value, max_value)
+        scaled_graph.data = (
+            scaled_graph.data - min_value + EPSILON
+        ) / (max_value - min_value + EPSILON)
         return scaled_graph
 
     def to_interaction_table(self, scaled=True, interaction_symbol='<->'):

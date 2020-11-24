@@ -93,7 +93,6 @@ setup(
         'scikit-learn',
         'statsmodels',
         'rpy2',
-        'packaging',
         'pySUMMA @ git+https://github.com/learn-ensemble/PY-SUMMA'
     ],
     zip_safe=False,
