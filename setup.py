@@ -72,7 +72,7 @@ scripts = ['bin/cosifer']
 
 setup(
     name='cosifer',
-    version='0.0.2',
+    version='0.0.3',
     description='COSIFER - Consensus Interaction Network Inference Service',
     long_description=open('README.md').read(),
     url='https://github.com/PhosphorylatedRabbits/cosifer',
@@ -93,6 +93,7 @@ setup(
         'scikit-learn',
         'statsmodels',
         'rpy2',
+        'packaging',
         'pySUMMA @ git+https://github.com/learn-ensemble/PY-SUMMA'
     ],
     zip_safe=False,
