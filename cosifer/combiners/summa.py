@@ -85,6 +85,8 @@ class Summa(NetworkCombiner):
         self.name = name
         self.interaction_symbol = interaction_symbol
         self.summa_object = _summa()
+        self.tol = kwargs.get('tol', 1e-3)
+        self.max_iter = kwargs.get('max_iter', 500)
         super().__init__(**kwargs)
 
     def _combine(self, results_list):
@@ -105,7 +107,7 @@ class Summa(NetworkCombiner):
             data = df.rank(ascending=False,
                            method='first').apply(fill_na_ranks,
                                                  axis=0).values.T.astype(int)
-            self.summa_object.fit(data)
+            self.summa_object.fit(data, tol=self.tol, max_iter=self.max_iter)
             scores = self.summa_object.get_scores(data)
             scores -= scores.min()
             scores /= scores.max()
