@@ -35,4 +35,10 @@ COMBINERS = {
     'snf': SNF(name='snf')
 }
 
+COMBINER_TYPES = {
+    'cit': CombineInteractionTables,
+    'summa': Summa,
+    'snf': SNF
+}
+
 RECOMMENDED_COMBINER = 'summa'

@@ -1,9 +1,10 @@
 """COSIFER client pipeline."""
 import os
+import json
 import logging
 from copy import deepcopy
 from ..inferencers import INFERENCERS, RECOMMENDED_INFERENCERS
-from ..combiners import COMBINERS, RECOMMENDED_COMBINER
+from ..combiners import COMBINERS, RECOMMENDED_COMBINER, COMBINER_TYPES
 from ..collections.interaction_table import interaction_table_from_gzip
 from ..utils.data import read_data, read_gmt
 
@@ -216,3 +217,45 @@ def run(
             logger.warn(
                 'inference on less than three features is not supported'
             )
+
+
+def run_combine(filepath, output_directory):
+    """
+    Run COSIFER combine client pipeline.
+
+    Args:
+        filepath (str): path to the JSON file configuring the combination.
+        output_directory (str): path where to store the results.
+    """
+    # ensure the output directory exists
+    os.makedirs(output_directory, exist_ok=True)
+    # read configuration
+    logger.debug('parsing configuration {}'.format(filepath))
+    with open(filepath) as fp:
+        configuration = json.load(fp)
+    logger.debug('configuration: {}'.format(configuration))
+    # get the combiner
+    combiner_name = configuration.get('method', RECOMMENDED_COMBINER)
+    logger.debug('combiner: {}'.format(combiner_name))
+    tables = dict()
+    for network_filepath in configuration.get('filepaths', []):
+        method = os.path.splitext(os.path.basename(network_filepath))[0]
+        tables[method] = interaction_table_from_gzip(network_filepath)
+    if len(tables) > 1:
+        output_filepath = '{}/{}.csv.gz'.format(
+            output_directory, combiner_name
+        )
+        combiner = COMBINER_TYPES[combiner_name](
+            name=combiner_name,
+            interaction_symbol=configuration.get('interaction_symbol', '<->'),
+            filepath=output_filepath,
+            **configuration.get('parameters', {})
+        )
+        combiner.load()
+        combiner.combine(tables.values())
+    elif len(tables):
+        logger.warn(
+            'skipping consenus since a single network has been inferred'
+        )
+    else:
+        logger.warn('no networks to combine were found')

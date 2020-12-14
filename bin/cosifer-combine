@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""COSIFER client."""
+import logging
+import sys
+import argparse
+from cosifer.pipelines.pipeline_cli import run_combine
+
+# setup logging
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger('cosifer-combine-cli')
+
+
+def argument_parser():
+    """"
+    Argument parser for COSIFER client.
+
+    Returns:
+        Namespace: argument namespace.
+    """
+    parser = argparse.ArgumentParser(
+        description='Run COSIFER to combine inferred networks.'
+    )
+    parser.add_argument('-i', '--filepath', required=True,
+                        help=(
+                            'path to the JSON file configuring the combination. '
+                            'The json should contain the a list of network filepaths '
+                            'as `filepaths`, and can additionally specify the combiner '
+                            'name as `method` and a dictionary of arguments passed to it '
+                            'as `parameters`, as well as `interaction_symbol` '
+                            'used for interaction naming in the output edge list.'
+                            )
+                        )
+    parser.add_argument('-o', '--output_directory', required=True,
+                        help='path to the output directory.')
+    return parser.parse_args()
+
+
+if __name__ == '__main__':
+    try:
+        # load arguments
+        arguments = argument_parser()
+        logger.debug(arguments)
+    except Exception:
+        logger.exception('error parsing the arguments')
+    try:
+        # run the combine client
+        run_combine(
+            filepath=arguments.filepath,
+            output_directory=arguments.output_directory
+        )
+    except Exception:
+        logger.exception('error running COSIFER combine')

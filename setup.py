@@ -68,11 +68,11 @@ class develop(_develop):
         _develop.run(self)
 
 
-scripts = ['bin/cosifer']
+scripts = ['bin/cosifer', 'bin/cosifer-combine']
 
 setup(
     name='cosifer',
-    version='0.0.3',
+    version='0.0.4',
     description='COSIFER - Consensus Interaction Network Inference Service',
     long_description=open('README.md').read(),
     url='https://github.com/PhosphorylatedRabbits/cosifer',
