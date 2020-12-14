@@ -21,7 +21,15 @@ def argument_parser():
         description='Run COSIFER to combine inferred networks.'
     )
     parser.add_argument('-i', '--filepath', required=True,
-                        help='path to the JSON file configuring the combination.')
+                        help=(
+                            'path to the JSON file configuring the combination. '
+                            'The json should contain the a list of network filepaths '
+                            'as `filepaths`, and can additionally specify the combiner '
+                            'name as `method` and a dictionary of arguments passed to it '
+                            'as `parameters`, as well as `interaction_symbol` '
+                            'used for interaction naming in the output edge list.'
+                            )
+                        )
     parser.add_argument('-o', '--output_directory', required=True,
                         help='path to the output directory.')
     return parser.parse_args()
