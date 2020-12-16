@@ -72,7 +72,7 @@ scripts = ['bin/cosifer', 'bin/cosifer-combine']
 
 setup(
     name='cosifer',
-    version='0.0.4',
+    version='0.0.5',
     description='COSIFER - Consensus Interaction Network Inference Service',
     long_description=open('README.md').read(),
     url='https://github.com/PhosphorylatedRabbits/cosifer',
