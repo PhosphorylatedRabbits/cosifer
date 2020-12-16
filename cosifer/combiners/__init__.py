@@ -5,7 +5,8 @@ from .cit import (
     mean_scaled_ranks_table, mean_table,
     median_scaled_ranks_table, median_table,
     max_scaled_ranks_table, max_table,
-    min_scaled_ranks_table, min_table
+    min_scaled_ranks_table, min_table,
+    WOC, WOCHard
 )
 from .summa import Summa
 from .snf import SNF
@@ -36,9 +37,10 @@ COMBINERS = {
 }
 
 COMBINER_TYPES = {
-    'cit': CombineInteractionTables,
     'summa': Summa,
-    'snf': SNF
+    'snf': SNF,
+    'woc': WOC,
+    'woc_hard': WOCHard
 }
 
 RECOMMENDED_COMBINER = 'summa'

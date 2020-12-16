@@ -297,3 +297,57 @@ class CombineInteractionTables(NetworkCombiner):
             str: name of the combiner.
         """
         return self.name
+
+
+class WOC(CombineInteractionTables):
+    """
+    Wisdom Of Crowds implementation.
+    """
+
+    def __init__(
+        self,
+        interaction_symbol='<->',
+        name='woc',
+        **kwargs
+    ):
+        """
+        Initialize the WOC combiner.
+
+        Args:
+            interaction_symbol (str, optional): symbol used to indicate
+                interactions in the index of the dataframe. Defaults to '<->'.
+            name (str, optional): name of the combiner. Defaults to 'woc'.
+        """
+        super().__init__(
+            combine_tables=mean_scaled_ranks_table,
+            interaction_symbol=interaction_symbol,
+            name=name,
+            **kwargs
+        )
+
+
+class WOCHard(CombineInteractionTables):
+    """
+    Wisdom Of Crowds with hard mean combiner implementation.
+    """
+
+    def __init__(
+        self,
+        interaction_symbol='<->',
+        name='woc_hard',
+        **kwargs
+    ):
+        """
+        Initialize the WOCHard combiner.
+
+        Args:
+            interaction_symbol (str, optional): symbol used to indicate
+                interactions in the index of the dataframe. Defaults to '<->'.
+            name (str, optional): name of the combiner. Defaults to 'woc_hard'.
+        """
+        super().__init__(
+            combine_tables=hard_mean_scaled_ranks_table,
+            interaction_symbol=interaction_symbol,
+            name=name,
+            **kwargs
+        )
