@@ -237,10 +237,9 @@ def run_combine(filepath, output_directory):
     # get the combiner
     combiner_name = configuration.get('method', RECOMMENDED_COMBINER)
     logger.debug('combiner: {}'.format(combiner_name))
-    tables = dict()
+    tables = []
     for network_filepath in configuration.get('filepaths', []):
-        method = os.path.splitext(os.path.basename(network_filepath))[0]
-        tables[method] = interaction_table_from_gzip(network_filepath)
+        tables.append(interaction_table_from_gzip(network_filepath))
     if len(tables) > 1:
         output_filepath = '{}/{}.csv.gz'.format(
             output_directory, combiner_name
@@ -252,7 +251,7 @@ def run_combine(filepath, output_directory):
             **configuration.get('parameters', {})
         )
         combiner.load()
-        combiner.combine(tables.values())
+        combiner.combine(tables)
     elif len(tables):
         logger.warn(
             'skipping consenus since a single network has been inferred'
