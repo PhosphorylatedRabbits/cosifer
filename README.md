@@ -96,9 +96,10 @@ optional arguments:
 
 In the folder [examples](./examples), you can find applications of COSIFER consensus network inference.
 
-## web service
+## web service deprecation
 
-Try out the COSIFER web service for free on [IBM Cloud](http://ibm.biz/cosifer-aas).
+The COSIFER web-service has been deprecated in favour of the python package hosted in this repository.
+Please check the examples to use COSIFER in your research.
 
 ## citation
 
